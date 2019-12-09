@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService} from './../services/authentication.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +14,15 @@ export class HomePage implements OnInit {
   constructor(
     private authService: AuthenticationService,
     public afStore: AngularFirestore,
-    public router: Router
-    ) { }
+    public router: Router,
+    public user: UserService
+    ) { 
+      //this.currentuser = user.getcurretUID()
+    }
 
   ngOnInit() {
   }
-
+  
   createlobby() {
     // const newData = this.afStore.collection(`lobby`).add({
     // });
