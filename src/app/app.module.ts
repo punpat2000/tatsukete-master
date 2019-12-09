@@ -15,10 +15,10 @@ import { IonicStorageModule } from '@ionic/storage'
 import { UserService } from './user.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import {HttpModule} from '@angular/http'
-import { SelectSearchableModule } from 'ionic-select-searchable'
+
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  entryComponents: [],  
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
@@ -28,7 +28,6 @@ import { SelectSearchableModule } from 'ionic-select-searchable'
     IonicStorageModule.forRoot(),
     AngularFirestoreModule, 
     HttpModule,
-    SelectSearchableModule
   ],
   providers: [
     StatusBar,
