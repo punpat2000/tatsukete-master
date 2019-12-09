@@ -17,8 +17,8 @@ export class ProfilePage implements OnInit {
   constructor(private afs: AngularFirestore,private user: UserService) { 
     this.mainuser = afs.doc(`users/${user.getUID()}`)
     this.userPosts = this.mainuser.valueChanges().subscribe(event=>{
-      this.username = event.username
-      this.profilePic = event.profilePic
+    this.username = event.username
+    this.profilePic = event.profilePic
     })
   }
 
