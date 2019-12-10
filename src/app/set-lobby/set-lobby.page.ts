@@ -27,7 +27,7 @@ export class SetLobbyPage implements OnInit {
 
   lobbyname: string = ""
   lobbydescription: string = ""
-  mainuser: AngularFirestoreDocument
+  //mainuser: AngularFirestoreDocument
   //createrUID
   //created
 
@@ -42,14 +42,14 @@ export class SetLobbyPage implements OnInit {
   ngOnInit() {
   }
 
-  async lobbysetup() {
-    const createrUID: string = await this.afAuth.auth.currentUser.uid
+  lobbysetup() {
+    const createrUID: string = this.afAuth.auth.currentUser.uid
     const {lobbyname,lobbydescription} =  this
     if (lobbyname.length > 0) {
       this.afStore.collection(`lobby`).add({
         lobbyname,
         lobbydescription,
-        createrUID
+        createrUID,
         //createrUID : getUID()
       })
     } else {
