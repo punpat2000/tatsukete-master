@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { ChatComponent} from '../chat/chat.component'
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
@@ -12,7 +12,8 @@ const routes: Routes = [
       { path: 'search', loadChildren: '../search/search.module#SearchPageModule'},
       { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule'},
       { path: 'edit-profile',loadChildren: '../edit-profile/edit-profile.module#EditProfilePageModule'},
-      { path: 'set-lobby', loadChildren: '../set-lobby/set-lobby.module#SetLobbyPageModule'}
+      { path: 'set-lobby', loadChildren: '../set-lobby/set-lobby.module#SetLobbyPageModule'},
+      { path: 'chat/:id', component: ChatComponent}
     ]
   }
 ];

@@ -15,9 +15,11 @@ import { IonicStorageModule } from '@ionic/storage'
 import { UserService } from './user.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import {HttpModule} from '@angular/http'
+import { ChatComponent } from './chat/chat.component';
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,ChatComponent],
   entryComponents: [],  
   imports: [
     BrowserModule, 

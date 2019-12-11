@@ -2,15 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore'
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx'
-import { SelectSearchableComponent } from 'ionic-select-searchable';
+import { AuthService } from  '../chatauth.service'
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage implements OnInit {
-
-  @ViewChild('myselect',{static:true}) selectComponent : SelectSearchableComponent
   searchterm:string;
   startAt = new Subject();
   endAt = new Subject();
@@ -20,7 +19,7 @@ export class SearchPage implements OnInit {
   startobs = this.startAt.asObservable();
   endobs = this.endAt.asObservable();
 
-  constructor(public afs: AngularFirestore) {
+  constructor(public afs: AngularFirestore, public authS: AuthService) {
 
    }
   
@@ -45,6 +44,7 @@ export class SearchPage implements OnInit {
   selectVal(q) {
     alert("you have selected = "+q);
   }
+  
 }
 
 // sampleArr = [];

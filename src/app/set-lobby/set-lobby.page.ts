@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AlertController } from '@ionic/angular';
 import { UserService } from '../user.service';
-import { getNumberOfCurrencyDigits } from '@angular/common';
-import { Observable } from 'rxjs';
-import * as firebase from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 
