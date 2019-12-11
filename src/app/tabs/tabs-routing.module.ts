@@ -12,7 +12,8 @@ const routes: Routes = [
       { path: 'search', loadChildren: '../search/search.module#SearchPageModule'},
       { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule'},
       { path: 'edit-profile',loadChildren: '../edit-profile/edit-profile.module#EditProfilePageModule'},
-      { path: 'set-lobby', loadChildren: '../set-lobby/set-lobby.module#SetLobbyPageModule'}
+      { path: 'set-lobby', loadChildren: '../set-lobby/set-lobby.module#SetLobbyPageModule'},
+      { path: 'chat', loadChildren: '../chat/chat.module#ChatPageModule'},
     ]
   }
 ];

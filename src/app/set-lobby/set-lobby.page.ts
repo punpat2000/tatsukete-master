@@ -6,6 +6,7 @@ import { getNumberOfCurrencyDigits } from '@angular/common';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,48 +15,51 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./set-lobby.page.scss'],
 })
 export class SetLobbyPage implements OnInit {
-
+  lobbyname : string=""
   constructor(
     public afStore: AngularFirestore,
     public alert: AlertController,
     public user: UserService,
-    public afAuth: AngularFireAuth
-    ) {
-      //this.mainuser = afStore.doc(`users/${user.getUID()}`)
-      //this.createrUID = user.getcurretUID()
-    }
+    public afAuth: AngularFireAuth,
+    private router: Router
+    ) {}
 
-  lobbyname: string = ""
-  lobbydescription: string = ""
-  //mainuser: AngularFirestoreDocument
-  //createrUID
-  //created
-
-  // getUID() {
-  //   this.afStore.doc(`users/${res.user.uid}`).get({ 
-  //     createrUID
-  //   })
-  // }
-
-  //createruid = new Observable(this.mainuser)
   
   ngOnInit() {
   }
 
   lobbysetup() {
-    const createrUID: string = this.afAuth.auth.currentUser.uid
-    const {lobbyname,lobbydescription} =  this
+    const {lobbyname} = this
     if (lobbyname.length > 0) {
       this.afStore.collection(`lobby`).add({
-        lobbyname,
-        lobbydescription,
-        createrUID,
-        //createrUID : getUID()
+        lobbyname
       })
     } else {
-      return alert('Please Enter Lobby Name')
+      return this.showAlert('Hey!','Please Enter Lobby Name')
     }
-    
+    this.showAlert("Success","Lobby added!")
+    this.router.navigate(['tabs/home'])
   }
+
+  async showAlert(header: string,message: string) {
+    const alert = await this.alert.create({
+      header,
+      message,
+      buttons: ["Ok"]
+    })
+    await alert.present()
+  }
+  // lobbysetup() {
+  //   const {lobbyname} =  this
+  //   if (lobbyname.length > 0) {
+  //     this.afStore.collection(`lobby`).add({
+  //       lobbyname
+  //       //createrUID : getUID()
+  //     })
+  //   } else {
+  //     return alert('Please Enter Lobby Name')
+  //   }
+    
+  // }
 
 }

@@ -3,6 +3,7 @@ import { AuthenticationService} from './../services/authentication.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-home',
@@ -10,23 +11,40 @@ import { UserService } from '../user.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
+  lobbies=[]
   constructor(
     private authService: AuthenticationService,
     public afStore: AngularFirestore,
     public router: Router,
     public user: UserService
     ) { 
-      //this.currentuser = user.getcurretUID()
     }
 
   ngOnInit() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        firebase.database().ref('/lobby').on('value', resp => {
+          if (resp) {
+            this.lobbies = [];
+            resp.forEach(childSnapshot => {
+              const lobby = childSnapshot.val();
+              lobby.key = childSnapshot.key;
+              this.lobbies.push(lobby);
+            });
+          }
+        });
+        } else {
+          this.router.navigate(['/tabs/home']);
+        }
+      });
   }
   
   createlobby() {
-    // const newData = this.afStore.collection(`lobby`).add({
-    // });
     this.router.navigate(['tabs/set-lobby']);
+  }
+
+  enterChat(key) {
+    this.router.navigate(['tabs/chat/'+key])
   }
   logout() {
     this.authService.logout();
