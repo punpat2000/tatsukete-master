@@ -33,6 +33,7 @@ export class HomePage implements OnInit {
             });
           }
         });
+        // const home = this.afStore.collection('lobby').get()
         } else {
           this.router.navigate(['/tabs/home']);
         }

@@ -15,7 +15,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./set-lobby.page.scss'],
 })
 export class SetLobbyPage implements OnInit {
+
   lobbyname : string=""
+
   constructor(
     public afStore: AngularFirestore,
     public alert: AlertController,
@@ -29,16 +31,27 @@ export class SetLobbyPage implements OnInit {
   }
 
   lobbysetup() {
-    const {lobbyname} = this
-    if (lobbyname.length > 0) {
-      this.afStore.collection(`lobby`).add({
-        lobbyname
-      })
-    } else {
-      return this.showAlert('Hey!','Please Enter Lobby Name')
+    // const {lobbyname} = this
+    // if (lobbyname.length > 0) {
+    //   this.afStore.collection(`lobby`).add({
+    //     lobbyname
+    //   })
+    // } else {
+    //   return this.showAlert('Hey!','Please Enter Lobby Name')
+    // }
+    // this.showAlert("Success","Lobby added!")
+    // this.router.navigate(['tabs/home'])
+    if (this.lobbyname.length > 0) {
+      const newData = firebase.database().ref('lobby/')
+      .push({
+        lobbyname: this.lobbyname
+      });
+      this.router.navigate(['/tabs/home']);
+      }
+    else {
+      this.showAlert('Hey!','Please Enter Lobby Name')
     }
-    this.showAlert("Success","Lobby added!")
-    this.router.navigate(['tabs/home'])
+
   }
 
   async showAlert(header: string,message: string) {
