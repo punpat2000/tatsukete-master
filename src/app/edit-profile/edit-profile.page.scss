@@ -3,9 +3,43 @@
     position: absolute;
     top: -100em;
     left:-100em;
+    color:#e2e0d5;
 }
 
 .profile-pic {
     width: 200px;
     height: 200px;
+}
+
+ion-toolbar {
+    --background: #3d4169 ;
+    color: #e2e0d5;
+}
+
+ion-back-button {
+    --color: #e2e0d5;
+}
+
+ion-content {
+    --background: #3a3a3a;
+    color:#e2e0d5;
+}
+
+ion-item {
+    --background: #565c5e;
+    color:#e2e0d5;
+}
+
+ion-card {
+    --background: #565c5e;
+    color:#e2e0d5;
+}
+
+ion-button {
+    color:#565c5e;
+    --color-hover: #dfdbd8;
+    --background: #b5c2c7;
+    --background-activated: #455954;
+    --background-focused: #b69b7d;
+    --background-hover: #565c5e;
 }

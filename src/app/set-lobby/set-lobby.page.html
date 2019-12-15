@@ -1,16 +1,17 @@
 <ion-header>
   <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+      </ion-buttons>
     <ion-title>Lobby Setup</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-list>
-        <ion-item>
-            <ion-label position="floating">Lobby Name</ion-label>
-            <ion-input type='text' [(ngModel)]="lobbyname" required=""></ion-input>
-        </ion-item>
-        <ion-button fill='solid' expand="block" color='dark' (click)="lobbysetup()">Start Chatting!</ion-button>
-    </ion-list>
+  <ion-item>
+      <ion-label position="floating">Lobby Name</ion-label>
+      <ion-input type='text' [(ngModel)]="lobbyname" required=""></ion-input>
+  </ion-item>
+  <ion-button fill='solid' expand="block" (click)="lobbysetup()">Start Chatting!</ion-button>
 
 </ion-content>

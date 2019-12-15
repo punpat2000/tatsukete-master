@@ -1,0 +1,36 @@
+ion-toolbar {
+    --background: #3d4169 ;
+    color: #e2e0d5;
+}
+
+ion-content {
+    --background: #d1cfc3;
+}
+
+ion-item {
+    --background: #e2e0d5;
+    --background-focused: #b69b7d;
+    color: #565c5e;
+}
+
+ion-icon {
+    font-size: 24px;
+}
+
+ion-button {
+    color:#565c5e;
+    --color-hover: #dfdbd8;
+}
+
+.register-button {
+    --background: #b5c2c7;
+    --background-activated: #455954;
+    --background-focused: #b69b7d;
+    --background-hover: #565c5e;
+}
+
+.back-button {
+    --background: #dfdbd8;
+    --background-focused: #b69b7d;
+    --background-hover: #565c5e;
+}

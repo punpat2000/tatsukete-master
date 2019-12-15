@@ -41,11 +41,11 @@ export class HomePage implements OnInit {
   }
   
   createlobby() {
-    this.router.navigate(['tabs/set-lobby']);
+    this.router.navigate(['/set-lobby']);
   }
 
   enterChat(key) {
-    this.router.navigate(['tabs/chat/'+key])
+    this.router.navigate(['/chat/'+key])
   }
   logout() {
     this.authService.logout();
