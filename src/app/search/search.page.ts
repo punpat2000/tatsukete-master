@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore'
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx'
 import { SelectSearchableComponent } from 'ionic-select-searchable';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-search',
@@ -21,9 +22,8 @@ export class SearchPage implements OnInit {
   startobs = this.startAt.asObservable();
   endobs = this.endAt.asObservable();
 
-  constructor(public afs: AngularFirestore) {
-
-   }
+  constructor(public afs: AngularFirestore,public alert: AlertController,) {
+  }
   
   ngOnInit() {
     Observable.combineLatest(this.startobs,this.endobs).subscribe((value)=>{
@@ -40,11 +40,20 @@ export class SearchPage implements OnInit {
   }
 
   firequery(start, end){
-    return this.afs.collection('lobby',ref=>ref.limit(4).orderBy('lobbyname').startAt(start).endAt(end)).valueChanges();
+    return this.afs.collection('lobby',ref=>ref.limit(20).orderBy('lobbyname').startAt(start).endAt(end)).valueChanges();
   }
 
   selectVal(q) {
-    alert("you have selected = "+q);
+    this.showAlert("Chat room for "+q," is available for you to join!");
+  }
+
+  async showAlert(header: string,message: string) {
+    const alert = await this.alert.create({
+      header,
+      message,
+      buttons: ["Ok"]
+    })
+    await alert.present()
   }
 }
 
