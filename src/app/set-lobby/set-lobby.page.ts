@@ -42,6 +42,10 @@ export class SetLobbyPage implements OnInit {
     // this.showAlert("Success","Lobby added!")
     // this.router.navigate(['tabs/home'])
     if (this.lobbyname.length > 0) {
+      const {lobbyname} = this
+      this.afStore.collection(`lobby`).add({
+            lobbyname
+      })
       const newData = firebase.database().ref('lobby/')
       .push({
         lobbyname: this.lobbyname
