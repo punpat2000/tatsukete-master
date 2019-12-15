@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , OnDestroy } from '@angular/core';
 import { AuthenticationService} from './../services/authentication.service';
 import { AngularFirestore,AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
@@ -10,10 +10,9 @@ import * as firebase from 'firebase';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit,OnDestroy {
   lobbies=[]
   mainuser: AngularFirestoreDocument
-  userPosts
   sub
   username: string
   constructor(
@@ -23,7 +22,7 @@ export class HomePage implements OnInit {
     public user: UserService
     ) { 
     this.mainuser = afStore.doc(`users/${user.getUID()}`)
-    this.userPosts = this.mainuser.valueChanges().subscribe(event=>{
+    this.sub = this.mainuser.valueChanges().subscribe(event=>{
     this.username = event.username
     })
     }
@@ -48,8 +47,6 @@ export class HomePage implements OnInit {
   }
   
   ngOnDestroy() {
-    this.sub = this.userPosts
-    console.log(this.sub)
     this.sub.unsubscribe();
   }
   createlobby() {
