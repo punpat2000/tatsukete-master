@@ -8,6 +8,7 @@ const TOKEN_KEY = 'auth-token'
 })
 export class AuthenticationService {
   authenticationState = new BehaviorSubject(false);
+  sub
   constructor(private storage: Storage,private plt:Platform) { 
     this.plt.ready().then(()=>{
       this.checkToken();
