@@ -11,8 +11,6 @@ const routes: Routes = [
       { path: 'home', loadChildren: '../home/home.module#HomePageModule'},
       { path: 'search', loadChildren: '../search/search.module#SearchPageModule'},
       { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule'},
-      { path: 'edit-profile',loadChildren: '../edit-profile/edit-profile.module#EditProfilePageModule'},
-      { path: 'set-lobby', loadChildren: '../set-lobby/set-lobby.module#SetLobbyPageModule'}
     ]
   }
 ];

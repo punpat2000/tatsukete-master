@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore'
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx'
 import { SelectSearchableComponent } from 'ionic-select-searchable';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.page.html',
