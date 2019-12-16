@@ -6,22 +6,20 @@
 
 <ion-content padding>
   <div id ="profile-info" *ngIf="username">
-    <ion-progress-bar></ion-progress-bar>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <p class="header-username">is it you?</p>
-            <h2 class="user-name">{{ username }}</h2>
-          </ion-col>
-          <ion-col>
-            <h2 class="user-name">your pics?</h2>
+        <ion-grid>
+          <ion-row>
             <ion-img  class="user-image" src="http://ucarecdn.com/{{ profilePic }}/-/scale_crop/200x200/center/"></ion-img>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      <ion-progress-bar></ion-progress-bar>
+          </ion-row>
+          <ion-row>
+            <h2 class="user-name">{{ username }}</h2>
+          </ion-row>
+        </ion-grid> 
+      <!-- <ion-item>
+        <p class="user-name">your pics?</p>
+      </ion-item> -->
+      <br>
+      <ion-button fill="solid" expand="block" routerLink="/edit-profile">Edit Profile</ion-button>
   </div>
-  <br>
-  <ion-button expand="block" routerLink="/edit-profile">Edit Profile</ion-button>
+  
 
 </ion-content>

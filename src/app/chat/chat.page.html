@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar class="head-toolbar">
     <ion-title>Chat</ion-title>
-    <ion-buttons slot="end" class="head-buttons">
+    <ion-buttons slot="end">
       <ion-button icon-only (click)="exitChat()">
-        <ion-icon name="exit"></ion-icon>
+        <ion-icon class="head-buttons" name="exit"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -30,10 +30,10 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar class="footer-toolbar">
     <ion-input type="text" placeholder="Type a message" [(ngModel)]="chatMessage" name="message"></ion-input>
     <ion-buttons slot="end">
-      <ion-button slot="end" color="primary" (click)="sendChatMessage()">
+      <ion-button slot="end" class="send-message" (click)="sendChatMessage()">
         Send
         <ion-icon name="send"></ion-icon>
       </ion-button>
