@@ -2,7 +2,7 @@
   <ion-toolbar class="head-toolbar">
     <ion-title>Chat</ion-title>
     <ion-buttons slot="end">
-      <ion-button icon-only (click)="exitChat()">
+      <ion-button (click)="exitChat()" class="exit-word">Exit
         <ion-icon class="head-buttons" name="exit"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -19,7 +19,11 @@
       </div>
 
       <ng-template #message>
-          <ion-label text-wrap class="media-body">
+          <ion-label text-wrap class="media-body" *ngIf="chat.user === nickname">
+            <h2>{{chat.message}}</h2>
+            <small>{{chat.user}} Date:{{chat.sendDate | date: 'yy/MM/dd (EEE) HH:mm'}}</small>
+          </ion-label>
+          <ion-label text-wrap class="media-body2" *ngIf="chat.user !== nickname">
             <h2>{{chat.message}}</h2>
             <small>{{chat.user}} Date:{{chat.sendDate | date: 'yy/MM/dd (EEE) HH:mm'}}</small>
           </ion-label>

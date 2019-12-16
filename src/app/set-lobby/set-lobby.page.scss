@@ -1,6 +1,9 @@
 ion-toolbar {
     --background: #3d4169 ;
     color: #e2e0d5;
+    .back-button {
+        color: #e2e0d5;
+    }
 }
 
 ion-content {
