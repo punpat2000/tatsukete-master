@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar class="head-toolbar">
     <ion-title>Chat</ion-title>
-    <ion-buttons slot="end" class="head-buttons">
-      <ion-button icon-only (click)="exitChat()">
-        <ion-icon name="exit"></ion-icon>
+    <ion-buttons slot="end">
+      <ion-button (click)="exitChat()" class="exit-word">Exit
+        <ion-icon class="head-buttons" name="exit"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -19,7 +19,11 @@
       </div>
 
       <ng-template #message>
-          <ion-label text-wrap class="media-body">
+          <ion-label text-wrap class="media-body" *ngIf="chat.user === nickname">
+            <h2>{{chat.message}}</h2>
+            <small>{{chat.user}} Date:{{chat.sendDate | date: 'yy/MM/dd (EEE) HH:mm'}}</small>
+          </ion-label>
+          <ion-label text-wrap class="media-body2" *ngIf="chat.user !== nickname">
             <h2>{{chat.message}}</h2>
             <small>{{chat.user}} Date:{{chat.sendDate | date: 'yy/MM/dd (EEE) HH:mm'}}</small>
           </ion-label>
@@ -30,10 +34,10 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar class="footer-toolbar">
     <ion-input type="text" placeholder="Type a message" [(ngModel)]="chatMessage" name="message"></ion-input>
     <ion-buttons slot="end">
-      <ion-button slot="end" color="primary" (click)="sendChatMessage()">
+      <ion-button slot="end" class="send-message" (click)="sendChatMessage()">
         Send
         <ion-icon name="send"></ion-icon>
       </ion-button>

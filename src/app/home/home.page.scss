@@ -1,7 +1,16 @@
 ion-toolbar {
     --background: #3d4169 ;
     color: #e2e0d5;
+    .logout-word{
+        color: #e2e0d5;
+    }
+    
+    .log-out-button {
+        color: #e2e0d5;
+    }
 }
+
+
 
 .create-lobby {
     --background: #e2e0d5;
@@ -16,12 +25,10 @@ ion-toolbar {
     color:#494949;
 }
 
-.log-out-button {
-    color: #e2e0d5;
-}
+
 
 ion-content {
-    --background: #3a3a3a;
+    --background: #d1cfc3;
 }
 
 ion-item {

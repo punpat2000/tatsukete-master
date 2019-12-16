@@ -4,25 +4,42 @@ ion-toolbar {
 }
 
 ion-content {
-    --background: #3a3a3a;
+    --background: #e2e0d5;
 }
 
 .header-username {
     size:16px;
-    color: #e2e0d5;
+    color: #565c5e;
+    margin-left: auto;
+    margin-right: auto;
 }
 .user-image {
     width: 150px;
     height: 150px;
-    color: #e2e0d5;
+    color: #565c5e;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .user-name {
-    color: #e2e0d5;
+    color: #565c5e;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 ion-progress-bar {
+    --background: #494949;
+}
+
+ion-item {
+    // --background: #565c5e;
+    // color #e2e0d5;
     --background: #e2e0d5;
+    color: #565c5e;
+
+
 }
 
 ion-button {

@@ -1,16 +1,14 @@
 <ion-header>
-    <ion-toolbar color="dark">
+    <ion-toolbar>
       <ion-title>Search Existing Lobby</ion-title>
     </ion-toolbar>
-    <ion-toolbar color="dark">
+    <ion-toolbar>
       <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
     </ion-toolbar>
   </ion-header>
   
   <ion-content>
     <div class="ion-padding">
-      <ion-list>
         <ion-item (click)="selectVal(lobby.lobbyname)"*ngFor='let lobby of lobbies'>{{lobby.lobbyname}}</ion-item>
-      </ion-list>
     </div>
   </ion-content>
