@@ -8,9 +8,9 @@ const routes: Routes = [
     path: '', //default
     component: TabsPage, // localhost/tabs/...
     children: [
-      { path: 'home', loadChildren: '../home/home.module#HomePageModule'},
-      { path: 'search', loadChildren: '../search/search.module#SearchPageModule'},
-      { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule'},
+      { path: 'home', loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)},
+      { path: 'search', loadChildren: () => import('../search/search.module').then(m => m.SearchPageModule)},
+      { path: 'profile', loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)},
     ]
   }
 ];

@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore'
 import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Rx'
-import { SelectSearchableComponent } from 'ionic-select-searchable';
+import { Observable } from 'rxjs/Rx';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -12,7 +11,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class SearchPage implements OnInit {
 
-  @ViewChild('myselect',{static:true}) selectComponent : SelectSearchableComponent
+  @ViewChild('myselect',{static:true}) selectComponent;
   searchterm:string;
   startAt = new Subject();
   endAt = new Subject();

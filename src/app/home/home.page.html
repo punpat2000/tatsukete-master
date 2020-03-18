@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="end">
       <ion-button (click)='logout()' class="logout-word">Logout
-        <ion-icon name ="log-out" class="log-out-button"></ion-icon>
+        <ion-icon name ="log-out-outline" class="log-out-button"></ion-icon>
         <!-- <ion-icon slot="icon-only" name ="log-out" class="log-out-button"></ion-icon> -->
       </ion-button>
     </ion-buttons>
@@ -15,7 +15,7 @@
     <ion-title>Create New Lobby</ion-title>
     <ion-buttons slot="end">
       <ion-button icon-only (click)="createlobby()">
-        <ion-icon name="add-circle" class="add-lobby"></ion-icon>
+        <ion-icon name="add-circle-outline" class="add-lobby"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -24,7 +24,7 @@
 <ion-content padding>
   <ion-item *ngFor="let lobby of lobbies" (click)="enterChat(lobby.key)">
     {{lobby.lobbyname}}
-    <ion-icon name="chatboxes" slot="end"></ion-icon>
+    <ion-icon name="chatbox-ellipses-outline" slot="end"></ion-icon>
   </ion-item>
 </ion-content>
 

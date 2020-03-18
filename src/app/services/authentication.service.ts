@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject} from 'rxjs'
 import { Storage} from '@ionic/storage'
 import { Platform } from '@ionic/angular';
+import {Router} from '@angular/router';
 const TOKEN_KEY = 'auth-token'
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,11 @@ const TOKEN_KEY = 'auth-token'
 export class AuthenticationService {
   authenticationState = new BehaviorSubject(false);
   sub
-  constructor(private storage: Storage,private plt:Platform) { 
+  constructor(
+    private storage: Storage,
+    private plt:Platform,
+    private router: Router
+    ) { 
     this.plt.ready().then(()=>{
       this.checkToken();
     });

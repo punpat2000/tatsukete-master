@@ -5,10 +5,10 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login',loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)},
   { path: 'register',loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)},
-  { path: 'tabs', canActivate: [AuthGuardService],loadChildren: './tabs/tabs.module#TabsPageModule' },
-  { path: 'edit-profile',canActivate: [AuthGuardService],loadChildren: './edit-profile/edit-profile.module#EditProfilePageModule'},
-  { path: 'chat',canActivate: [AuthGuardService], loadChildren: './chat/chat.module#ChatPageModule'},
-  { path: 'set-lobby',canActivate: [AuthGuardService], loadChildren: './set-lobby/set-lobby.module#SetLobbyPageModule'},
+  { path: 'tabs', canActivate: [AuthGuardService],loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule) },
+  { path: 'edit-profile',canActivate: [AuthGuardService],loadChildren: () => import('./edit-profile/edit-profile.module').then(m => m.EditProfilePageModule)},
+  { path: 'chat',canActivate: [AuthGuardService], loadChildren: () => import('./chat/chat.module').then(m => m.ChatPageModule)},
+  { path: 'set-lobby',canActivate: [AuthGuardService], loadChildren: () => import('./set-lobby/set-lobby.module').then(m => m.SetLobbyPageModule)},
 ];
 
 //localhost/tabs
