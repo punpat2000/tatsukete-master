@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
   async login() {
     const {username,password} = this
     try {
-      const res = await this.afAuth.auth.signInWithEmailAndPassword(username+'@gmail.com',password)
+      const res = await this.afAuth.auth.signInWithEmailAndPassword(username+'@gmail.com',password);
       this.authService.login();
     } catch(err) {
       console.dir(err)

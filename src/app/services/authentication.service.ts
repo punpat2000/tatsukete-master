@@ -1,36 +1,39 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject} from 'rxjs'
-import { Storage} from '@ionic/storage'
-import { Platform } from '@ionic/angular';
+import { BehaviorSubject} from 'rxjs';
+import { Storage} from '@ionic/storage';
 import {Router} from '@angular/router';
+import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
+
 const TOKEN_KEY = 'auth-token'
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  authenticationState = new BehaviorSubject(false);
-  sub
+  authenticationState = new BehaviorSubject<boolean>(false);
+
   constructor(
     private storage: Storage,
-    private plt:Platform,
+    private afAuth: AngularFireAuth,
     private router: Router
-    ) { 
-    this.plt.ready().then(()=>{
-      this.checkToken();
-    });
-  }
-  login() {
-    return this.storage.set(TOKEN_KEY,'Username Password').then(res=>{
-      this.authenticationState.next(true);
+    ) {
+    this.afAuth.auth.onAuthStateChanged( user => {
+      if(user)
+        this.authenticationState.next(true);
+      else
+        this.authenticationState.next(false);
     })
   }
-  logout() {
-    return this.storage.remove(TOKEN_KEY).then(()=>{
-      this.authenticationState.next(false);
-    });
+  login() {
+    this.storage.set(TOKEN_KEY,'Username Password');
+    this.router.navigate(['tabs']);
   }
-  isAuthenticated() {
-    return this.authenticationState.value;
+  async logout() {
+    await this.afAuth.auth.signOut();
+    this.router.navigate(['login']);
+  }
+  isAuthenticated(): Observable<boolean> {
+    return this.authenticationState.asObservable();
   }
   checkToken() {
     return this.storage.get(TOKEN_KEY).then(res=>{
